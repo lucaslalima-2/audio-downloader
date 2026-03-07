@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+env/
+.venv/
+ENV/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Downloaded YouTube files (Audio/Video)
+*.mp3
+*.m4a
+*.mp4
+*.webm
+
+# OS generated files
+.DS_Store
+Thumbs.db
