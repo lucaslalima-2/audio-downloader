@@ -22,14 +22,19 @@ def download_youtube_audio(url):
     ydl_opts = {
         'format': 'bestaudio/best',
         'paths': {'home': download_path},
-        'outtmpl': '%(title)s.%(ext)s',  # Saves file as "Video Title.mp3"
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-            'preferredquality': '192',
-        }],
-        'quiet': False,  # Shows progress in the terminal
-        'no_warnings': True,
+        'outtmpl': '%(title)s.%(ext)s',
+        'quiet': False,
+        'source_address': '0.0.0.0', # Force IPv4
+        'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'extractorargs': {
+            'youtube': {
+                'player_client': ['default', '-android_sdkless']
+            }
+        },
+        'postprocessors': [
+            {'key': 'FFmpegExtractAudio', 'preferredcodec': 'mp3', 'preferredquality': '192'},
+            {'key': 'FFmpegMetadata', 'add_metadata': True},
+        ],
     }
 
     try:
